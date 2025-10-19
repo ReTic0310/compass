@@ -1,0 +1,33 @@
+{
+  "figma_access_token": "${FIGMA_ACCESS_TOKEN}",
+  "figma_file_key": "YOUR_FIGMA_FILE_KEY_HERE",
+  "figma_file_url": "https://www.figma.com/file/YOUR_FILE_KEY/Your-Project-Name",
+  "target_platforms": {
+    "flutter": {
+      "enabled": true,
+      "output_path": "flutter_app/lib/design_system/",
+      "asset_path": "flutter_app/assets/"
+    },
+    "swiftui": {
+      "enabled": true,
+      "output_path": "watch_app/WatchApp/DesignSystem/",
+      "asset_path": "watch_app/WatchApp/Assets.xcassets/"
+    }
+  },
+  "export_options": {
+    "icons": {
+      "format": "svg",
+      "scales": [1]
+    },
+    "images": {
+      "format": "png",
+      "scales": [1, 2, 3]
+    }
+  },
+  "sync_options": {
+    "auto_update_specs": false,
+    "create_snapshots": true,
+    "snapshot_interval_hours": 24
+  }
+}
+

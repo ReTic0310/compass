@@ -1,0 +1,50 @@
+{
+  "remote": {
+    "origin": "git@github.com:username/compass.git"
+  },
+  "auth_method": "ssh",
+  "default_branch": "main",
+  "branch_naming": {
+    "feature": "feature/{feature-name}-{phase}",
+    "bugfix": "bugfix/{feature-name}",
+    "hotfix": "hotfix/{description}"
+  },
+  "auto_commit": true,
+  "auto_push": false,
+  "auto_pr": false,
+  "pr_defaults": {
+    "draft": true,
+    "auto_merge": false,
+    "delete_branch_after_merge": true,
+    "require_review": true
+  },
+  "commit_message_template": {
+    "requirements": "docs({feature-name}): add requirements specification",
+    "design": "docs({feature-name}): add technical design",
+    "tasks": "docs({feature-name}): add implementation tasks",
+    "implementation": "feat({feature-name}): {task-description}",
+    "test": "test({feature-name}): add tests for {component}",
+    "bugfix": "fix({feature-name}): {description}",
+    "refactor": "refactor({feature-name}): {description}",
+    "chore": "chore({scope}): {description}"
+  },
+  "hooks": {
+    "pre-commit": true,
+    "commit-msg": true,
+    "pre-push": false
+  },
+  "github": {
+    "pr_template_path": ".github/pull_request_template.md",
+    "default_reviewers": [],
+    "default_assignees": [],
+    "labels": {
+      "requirements": ["documentation", "requirements"],
+      "design": ["documentation", "design"],
+      "tasks": ["documentation", "tasks"],
+      "implementation": ["feature", "implementation"],
+      "bugfix": ["bug"],
+      "test": ["test"]
+    }
+  }
+}
+

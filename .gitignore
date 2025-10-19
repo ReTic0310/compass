@@ -1,0 +1,167 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VSCode related
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Flutter App specific
+flutter_app/.dart_tool/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+flutter_app/.packages
+flutter_app/.pub-cache/
+flutter_app/.pub/
+flutter_app/build/
+flutter_app/ios/Flutter/flutter_export_environment.sh
+flutter_app/ios/Flutter/Generated.xcconfig
+flutter_app/ios/Pods/
+flutter_app/ios/Podfile.lock
+flutter_app/.metadata
+
+# Android related
+flutter_app/android/app/debug
+flutter_app/android/app/profile
+flutter_app/android/app/release
+flutter_app/android/.gradle/
+flutter_app/android/captures/
+flutter_app/android/gradle-wrapper.jar
+flutter_app/android/.gradletasknamecache
+flutter_app/android/local.properties
+
+# iOS related
+flutter_app/ios/**/Flutter/App.framework
+flutter_app/ios/**/Flutter/Flutter.framework
+flutter_app/ios/**/Flutter/Flutter.podspec
+flutter_app/ios/**/*.pbxuser
+flutter_app/ios/**/*.mode1v3
+flutter_app/ios/**/*.mode2v3
+flutter_app/ios/**/*.perspectivev3
+flutter_app/ios/**/*.xcscmblueprint
+flutter_app/ios/**/*.xccheckout
+flutter_app/ios/**/*.moved-aside
+flutter_app/ios/**/*.xcuserstate
+flutter_app/ios/**/DerivedData/
+flutter_app/ios/**/*.xcworkspace/xcuserdata/
+flutter_app/ios/**/GeneratedPluginRegistrant.*
+
+# watchOS related
+watch_app/build/
+watch_app/DerivedData/
+watch_app/**/*.xcworkspace/xcuserdata/
+watch_app/**/*.xcodeproj/xcuserdata/
+watch_app/**/*.xcodeproj/project.xcworkspace/xcuserdata/
+watch_app/**/*.pbxuser
+watch_app/**/*.mode1v3
+watch_app/**/*.mode2v3
+watch_app/**/*.perspectivev3
+watch_app/**/*.xccheckout
+watch_app/**/*.moved-aside
+watch_app/**/*.xcuserstate
+watch_app/**/xcschememanagement.plist
+
+# Swift Package Manager
+watch_app/**/.swiftpm/
+watch_app/**/Package.resolved
+watch_app/.build/
+
+# CocoaPods
+watch_app/Pods/
+watch_app/Podfile.lock
+
+# Carthage
+watch_app/Carthage/
+
+# Accio dependency management
+watch_app/Dependencies/
+watch_app/.accio/
+
+# fastlane
+watch_app/fastlane/report.xml
+watch_app/fastlane/Preview.html
+watch_app/fastlane/screenshots/**/*.png
+watch_app/fastlane/test_output
+
+# Xcode
+watch_app/**/*.hmap
+watch_app/**/*.ipa
+watch_app/**/*.dSYM.zip
+watch_app/**/*.dSYM
+watch_app/**/timeline.xctimeline
+watch_app/**/playground.xcworkspace
+
+# Swift specific
+watch_app/**/*.swiftpm
+watch_app/**/.swiftpm/config/registries.json
+watch_app/**/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# API Keys and Secrets
+**/secrets.json
+**/api_keys.json
+
+# Figma Config (keep template)
+.figma-config.json
+
+# Coverage
+coverage/
+*.lcov
+test/.test_coverage.dart
+
+# Kiro generated files (keep specs)
+# We want to track .kiro/ directory but ignore temporary files
+.kiro/**/*.tmp
+.kiro/**/*.bak
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+
+# OS specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+!.cursor/
+
+# Test artifacts
+test_driver/screenshots/
+screenshots/

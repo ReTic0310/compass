@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://compass-app.local/schemas/search_history_schema.json",
+  "title": "SearchHistory",
+  "description": "検索履歴データのスキーマ定義。ユーザーが過去に検索した目的地の情報を保存する。",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "検索履歴の一意識別子（UUID）",
+      "format": "uuid"
+    },
+    "destinationName": {
+      "type": "string",
+      "description": "目的地の名前（例：「東京タワー」「渋谷駅」）",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "destinationAddress": {
+      "type": ["string", "null"],
+      "description": "目的地の住所（オプション）",
+      "maxLength": 500
+    },
+    "latitude": {
+      "type": "number",
+      "description": "目的地の緯度",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "description": "目的地の経度",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "searchedAt": {
+      "type": "string",
+      "description": "検索日時（ISO 8601形式）",
+      "format": "date-time"
+    },
+    "lastUsedAt": {
+      "type": "string",
+      "description": "最後に使用した日時（ISO 8601形式）",
+      "format": "date-time"
+    },
+    "usageCount": {
+      "type": "integer",
+      "description": "この履歴を使用した回数（人気度の指標）",
+      "minimum": 0,
+      "default": 0
+    },
+    "isFavorite": {
+      "type": "boolean",
+      "description": "お気に入りフラグ（将来のお気に入り機能用）",
+      "default": false
+    }
+  },
+  "required": [
+    "id",
+    "destinationName",
+    "latitude",
+    "longitude",
+    "searchedAt",
+    "lastUsedAt",
+    "usageCount"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "destinationName": "東京タワー",
+      "destinationAddress": "東京都港区芝公園4-2-8",
+      "latitude": 35.6585805,
+      "longitude": 139.7454329,
+      "searchedAt": "2025-10-19T10:30:00Z",
+      "lastUsedAt": "2025-10-19T10:30:00Z",
+      "usageCount": 1,
+      "isFavorite": false
+    },
+    {
+      "id": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+      "destinationName": "渋谷スクランブル交差点",
+      "destinationAddress": null,
+      "latitude": 35.6595,
+      "longitude": 139.7004,
+      "searchedAt": "2025-10-18T15:20:00Z",
+      "lastUsedAt": "2025-10-19T09:00:00Z",
+      "usageCount": 3,
+      "isFavorite": true
+    }
+  ]
+}
+

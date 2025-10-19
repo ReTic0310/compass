@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://compass.app/schemas/route.json",
+  "title": "Route",
+  "description": "Navigation route with start, end, and waypoints",
+  "type": "object",
+  "required": ["id", "start", "end", "points", "distance", "estimated_duration_seconds"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique route identifier (UUID)",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "start": {
+      "$ref": "#/definitions/Location",
+      "description": "Starting location"
+    },
+    "end": {
+      "$ref": "#/definitions/Location",
+      "description": "Destination location"
+    },
+    "points": {
+      "type": "array",
+      "description": "Ordered list of route waypoints",
+      "items": {
+        "$ref": "#/definitions/RoutePoint"
+      }
+    },
+    "distance": {
+      "type": "number",
+      "description": "Total route distance in meters",
+      "minimum": 0
+    },
+    "estimated_duration_seconds": {
+      "type": "integer",
+      "description": "Estimated travel time in seconds",
+      "minimum": 0
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Route creation timestamp (ISO 8601)"
+    },
+    "traffic_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "heavy"],
+      "description": "Current traffic level on route"
+    }
+  },
+  "definitions": {
+    "Location": {
+      "type": "object",
+      "required": ["latitude", "longitude"],
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Latitude in decimal degrees"
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Longitude in decimal degrees"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable location name",
+          "maxLength": 200
+        },
+        "address": {
+          "type": "string",
+          "description": "Full address",
+          "maxLength": 500
+        }
+      }
+    },
+    "RoutePoint": {
+      "type": "object",
+      "required": ["latitude", "longitude"],
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "description": "Waypoint latitude"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Waypoint longitude"
+        },
+        "instruction": {
+          "type": "string",
+          "description": "Navigation instruction at this point",
+          "maxLength": 200
+        },
+        "distance_from_start": {
+          "type": "number",
+          "description": "Distance from route start in meters",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
+

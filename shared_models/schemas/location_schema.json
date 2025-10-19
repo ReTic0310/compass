@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://compass.app/schemas/location.json",
+  "title": "Location",
+  "description": "Geographic location with coordinates and metadata",
+  "type": "object",
+  "required": ["latitude", "longitude"],
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Latitude in decimal degrees"
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Longitude in decimal degrees"
+    },
+    "altitude": {
+      "type": "number",
+      "description": "Altitude in meters above sea level"
+    },
+    "accuracy": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Horizontal accuracy in meters"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable location name",
+      "maxLength": 200
+    },
+    "address": {
+      "type": "string",
+      "description": "Full formatted address",
+      "maxLength": 500
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this location was recorded (ISO 8601)"
+    }
+  }
+}
+

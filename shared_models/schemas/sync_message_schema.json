@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://compass.app/schemas/sync_message.json",
+  "title": "SyncMessage",
+  "description": "Message format for cross-platform data synchronization",
+  "type": "object",
+  "required": ["type", "timestamp", "version", "payload"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "navigation_update",
+        "navigation_action",
+        "route_history",
+        "favorites",
+        "settings",
+        "location_update"
+      ],
+      "description": "Message type identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Message creation time (ISO 8601)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Protocol version (e.g., '1.0')"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Message-specific data",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/NavigationUpdatePayload"
+        },
+        {
+          "$ref": "#/definitions/NavigationActionPayload"
+        },
+        {
+          "$ref": "#/definitions/RouteHistoryPayload"
+        },
+        {
+          "$ref": "#/definitions/FavoritesPayload"
+        }
+      ]
+    },
+    "device_id": {
+      "type": "string",
+      "description": "Unique device identifier"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Message priority: 0=automatic, 1=user action, 2=critical"
+    }
+  },
+  "definitions": {
+    "NavigationUpdatePayload": {
+      "type": "object",
+      "required": ["navigation_state", "route"],
+      "properties": {
+        "navigation_state": {
+          "type": "string",
+          "enum": ["inactive", "active", "paused"],
+          "description": "Current navigation state"
+        },
+        "route": {
+          "type": "object",
+          "description": "Current navigation route"
+        },
+        "current_location": {
+          "type": "object",
+          "description": "Current user location"
+        },
+        "next_instruction": {
+          "type": "object",
+          "properties": {
+            "distance_to_next": {
+              "type": "number",
+              "description": "Distance to next turn in meters"
+            },
+            "instruction": {
+              "type": "string",
+              "description": "Navigation instruction text"
+            }
+          }
+        }
+      }
+    },
+    "NavigationActionPayload": {
+      "type": "object",
+      "required": ["action"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["start", "stop", "pause", "resume", "recalculate"],
+          "description": "Navigation action to perform"
+        },
+        "route_id": {
+          "type": "string",
+          "description": "Associated route ID (if applicable)"
+        }
+      }
+    },
+    "RouteHistoryPayload": {
+      "type": "object",
+      "required": ["routes"],
+      "properties": {
+        "routes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "List of historical routes"
+        }
+      }
+    },
+    "FavoritesPayload": {
+      "type": "object",
+      "required": ["locations"],
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "List of favorite locations"
+        }
+      }
+    }
+  }
+}
+
